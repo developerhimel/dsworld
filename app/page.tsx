@@ -1,6 +1,11 @@
+"use client";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "./page.module.css";
+import { motion } from "framer-motion";
+import EarthCanvas from "@/components/Earth";
+import { slideIn } from "@/utils/motion";
+import ComputersCanvas from "@/components/Computers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +36,15 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="max-w-2xl m-auto">
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className="xl:w-[500px] bg-black xl:h-[500px] md:h-[550px] h-[350px]"
+        >
+          <EarthCanvas />
+        </motion.div>
+      </div>
+
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -43,6 +57,10 @@ export default function Home() {
         <div className={styles.thirteen}>
           <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
         </div>
+      </div>
+
+      <div className="w-full h-96 p-16">
+        <ComputersCanvas />
       </div>
 
       <div className={styles.grid}>
